@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Employee Management System</h1>
+    <hr>
+    <h2>Update Employee</h2>
+    <form action="#" th:action="@{/updateEmployee/{id} (id=${employee.id})}" th:object="${employee}" method="POST">
+
+        <input type="hidden" th:field="*{id}"/>
+        <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{age}" placeholder="Age" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{designation}" placeholder="designation" class="form-control mb-4 col-4">
+        <button href="submit" class="btn btn-info col-2">Update Employee</button>
+        <select th:field="*{departmentId}" th:value="*{departmentId}">
+            <option th:each="department: ${department}"
+                    th:value="${department.id}"
+                    th:selected="${departmentId == department.id }"
+                    th:text="${department.dep_name}"></option>
+        </select>
+    </form>
+    <hr>
+    <a th:href="#{/}">Back  to Employee List</a>
+</div>
+</body>
+</html>
